@@ -31,6 +31,9 @@
 
 <body>
 {% block Header %}
+
+
+
 <!-- Header Section Start -->
 <div class="header-section section">
 
@@ -42,7 +45,9 @@
                 <div class="col mt-10 mb-10">
                     <!-- Header Links Start -->
                     <div class="header-links">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a href="track-order.html"><img src="{{ asset('Front/assets/images/icons/car.png')}}" alt="Car Icon"> <span>Track your order</span></a>
+                        {% endif %}
                         <a href="store.html"><img src="{{ asset('Front/assets/images/icons/marker.png')}}" alt="Car Icon"> <span>Locate Store</span></a>
                     </div><!-- Header Links End -->
                 </div>
@@ -71,8 +76,27 @@
                 <div class="col order-2 order-xs-2 order-lg-12 mt-10 mb-10">
                     <!-- Header Account Links Start -->
                     <div class="header-account-links">
-                        <a href="register.html"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
-                        <a href="login.html"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                        <a href="{{ path('fos_user_profile_show') }}"><i class="icofont icofont-user-alt-7"></i> <span>{{ '%username%'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span></a>
+                            <a href="{{ path('fos_user_security_logout') }}"><i class="icofont icofont-logout d-none"></i> <span>{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</span></a>
+
+
+
+                        {% else %}
+                            <a href="{{ path('fos_user_registration_register') }}"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
+                            <a href="{{ path('fos_user_security_login') }}"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
+                        {% endif %}
+
+                        {% if app.request.hasPreviousSession %}
+                            {% for type, messages in app.session.flashbag.all() %}
+                                {% for message in messages %}
+                                    <div class="flash-{{ type }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                     </div><!-- Header Account Links End -->
                 </div>
 
@@ -159,14 +183,14 @@
                 <div class="col order-2 order-lg-12 order-xl-12">
                     <!-- Header Shop Links Start -->
                     <div class="header-shop-links">
-
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <!-- Compare -->
                         <a href="compare.html" class="header-compare"><i class="ti-control-shuffle"></i></a>
                         <!-- Wishlist -->
                         <a href="wishlist.html" class="header-wishlist"><i class="ti-heart"></i> <span class="number">3</span></a>
                         <!-- Cart -->
                         <a href="cart.html" class="header-cart"><i class="ti-shopping-cart"></i> <span class="number">3</span></a>
-
+                        {% endif %}
                     </div><!-- Header Shop Links End -->
                 </div>
 
@@ -176,7 +200,7 @@
             </div>
         </div>
     </div><!-- Header Bottom End -->
-
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <!-- Header Category Start -->
     <div class="header-category-section">
         <div class="container">
@@ -210,7 +234,7 @@
             </div>
         </div>
     </div><!-- Header Category End -->
-
+{% endif %}
 </div><!-- Header Section End -->
 {% endblock %}
 
@@ -227,15 +251,7 @@
 
             <!-- Footer Widget Start -->
             <div class="row">
-                <div class="col mb-90">
-                    <div class="footer-widget text-center">
-                        <div class="footer-logo">
-                            <img src="{{ asset('Front/assets/images/logo.png')}}" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
-                            <img class="theme-dark" src="{{ asset('Front/assets/images/logo-light.png')}}" alt="E&E - Electronics eCommerce Bootstrap4 HTML Template">
-                        </div>
-                        <p>Electronics product actual teachings of  he great explorer of the truth, the malder of human happiness. No one rejects</p>
-                    </div>
-                </div>
+
             </div><!-- Footer Widget End -->
 
             <div class="row">
@@ -344,6 +360,7 @@
 </div><!-- Footer Section End -->
 
 <!-- Popup Subscribe Section Start -->
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 <div class="popup-subscribe-section section bg-gray pt-55 pb-55" data-modal="popup-modal">
 
     <!-- Popup Subscribe Wrap Start -->
@@ -380,7 +397,7 @@
     </div><!-- Popup Subscribe Wrap End -->
 
 </div><!-- Popup Subscribe Section End -->
-
+{% endif %}
 
 <!-- JS
 ============================================ -->

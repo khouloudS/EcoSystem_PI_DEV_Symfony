@@ -1,0 +1,74 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>Register</h1>
+                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+<div class="register-section section mt-90 mb-90">
+    <div class="container">
+        <div class="row">
+
+            <!-- Register -->
+            <div class="col-md-6 col-12 d-flex">
+                <div class="ee-register">
+
+                    <h3>We will need for your registration</h3>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+                </div>
+            </div>
+
+
+            <div class="col-md-1 col-12 d-flex">
+
+                <div class="login-reg-vertical-boder"></div>
+
+            </div>
+            <!-- Account Image -->
+            <div class="col-md-5 col-12 d-flex">
+
+                <div class="ee-account-image">
+                    <h3>Upload your Image</h3>
+
+                    <img src="{{ asset('Front/assets/images/account-image-placeholder.jpg') }}" alt="Account Image Placeholder" class="image-placeholder">
+
+                    <div class="account-image-upload">
+                        <input type="file" name="chooseFile" id="account-image-upload">
+                        <label class="account-image-label" for="account-image-upload">Choose your image</label>
+                    </div>
+
+                    <p>jpEG 250x250</p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div><!-- Register Section End -->

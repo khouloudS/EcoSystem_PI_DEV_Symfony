@@ -1,0 +1,87 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>Login</h1>
+                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Login Section Start -->
+<div class="login-section section mt-90 mb-90">
+    <div class="container">
+        <div class="row">
+
+            <!-- Login -->
+            <div class="col-md-6 col-12 d-flex">
+                <div class="ee-login">
+
+                    <h3>Login to your account</h3>
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+                    <h4>Don’t have account? please click <a href="{{ path('fos_user_registration_register') }}">Register</a></h4>
+
+                </div>
+            </div>
+
+            <div class="col-md-1 col-12 d-flex">
+
+                <div class="login-reg-vertical-boder"></div>
+
+            </div>
+
+            <!-- Login With Social -->
+            <div class="col-md-5 col-12 d-flex">
+
+                <div class="ee-social-login">
+                    <h3>Also you can login with...</h3>
+
+                    <a href="#" class="facebook-login">Login with <i class="fa fa-facebook"></i></a>
+                    <a href="#" class="twitter-login">Login with <i class="fa fa-twitter"></i></a>
+                    <a href="#" class="google-plus-login">Login with <i class="fa fa-google-plus"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div><!-- Login Section End -->
