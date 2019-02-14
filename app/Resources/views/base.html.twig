@@ -46,9 +46,9 @@
                     <!-- Header Links Start -->
                     <div class="header-links">
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a href="track-order.html"><img src="{{ asset('Front/assets/images/icons/car.png')}}" alt="Car Icon"> <span>Track your order</span></a>
+                        <a href="track-order.html"><img src="{{ asset('Front/assets/images/icons/car.png')}}" alt="Car Icon"> <span>Suivre commande</span></a>
                         {% endif %}
-                        <a href="store.html"><img src="{{ asset('Front/assets/images/icons/marker.png')}}" alt="Car Icon"> <span>Locate Store</span></a>
+                        <a href="store.html"><img src="{{ asset('Front/assets/images/icons/marker.png')}}" alt="Car Icon"> <span>localiser magasins</span></a>
                     </div><!-- Header Links End -->
                 </div>
 
@@ -84,8 +84,8 @@
 
 
                         {% else %}
-                            <a href="{{ path('fos_user_registration_register') }}"><i class="icofont icofont-user-alt-7"></i> <span>my account</span></a>
-                            <a href="{{ path('fos_user_security_login') }}"><i class="icofont icofont-login d-none"></i> <span>Login</span></a>
+                            <a href="{{ path('fos_user_registration_register') }}"><i class="icofont icofont-user-alt-7"></i> <span>{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</span></a>
+                            <a href="{{ path('fos_user_security_login') }}"><i class="icofont icofont-login d-none"></i> <span>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</span></a>
                         {% endif %}
 
                         {% if app.request.hasPreviousSession %}

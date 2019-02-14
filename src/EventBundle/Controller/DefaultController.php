@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('@Event/Default/index.html.twig');
     }
+
+    public function indexadminAction()
+    {
+        return $this->render('@Event/Default/indexadmin.html.twig');
+    }
 }
