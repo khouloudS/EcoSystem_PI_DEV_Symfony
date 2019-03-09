@@ -20,7 +20,7 @@ class MarkersType extends AbstractType
             ->
         add('typePointCollect',EntityType::class,array(
             'class'=>'PointCollectBundle:TypePointCollect', 'choice_label'=>'name', 'multiple'=>false
-        ))->add('slug')->add('submit',SubmitType::class);
+        ))->add('submit',SubmitType::class);
     }
     /**
      * {@inheritdoc}
