@@ -23,9 +23,11 @@ class DefaultController extends Controller
     {
 
 
-       $lat =36.8374946 ;
-       $lng= 10.1927389;
-       $type = "Carrefour Market";
+      // $lat =36.8374946 ;
+      // $lng= 10.1927389;
+         $lat = floatval($request->get('lat'));
+        $lng = floatval($request->get('lng'));
+      // $type = "Carrefour Market";
 
 
         $em = $this->getDoctrine()->getManager();
