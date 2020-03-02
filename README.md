@@ -1,77 +1,58 @@
-Symfony Standard Edition
+Symfony Demo Application
 ========================
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+Locate the addresses of the closest collection points to users
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Requirements
+------------
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+  * PHP 7 or higher;
+  * PDO-MySQL PHP extension enabled;
+  * and the [usual Symfony application requirements][2].
 
-What's inside?
---------------
+Installation
+------------
 
-The Symfony Standard Edition is configured with the following defaults:
+[Download Symfony][3.4] to install the `symfony` binary on your computer and run
+this command:
 
-  * An AppBundle you can use to start coding;
+```bash
+$ symfony new --demo my_project
+```
 
-  * Twig as the only configured template engine;
+Alternatively, you can use Composer:
 
-  * Doctrine ORM/DBAL;
+```bash
+$ composer create-project symfony/symfony-demo my_project
+```
 
-  * Swiftmailer;
+Usage
+-----
 
-  * Annotations enabled for everything.
+There's no need to configure anything to run the application. If you have
+[installed Symfony][3.4], run this command and access the application in your
+browser at the given URL (<https://localhost:8000> by default):
 
-It comes pre-configured with the following bundles:
+```bash
+$ cd my_project/
+$ symfony serve
+```
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+If you don't have the Symfony binary installed, run `php -S localhost:8000 -t public/`
+to use the built-in PHP web server or [configure a web server][3] like Nginx or
+Apache to run the application.
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+Tests
+-----
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+Execute this command to run tests:
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+```bash
+$ cd my_project/
+$ ./bin/phpunit
+```
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
+[1]: https://symfony.com/doc/current/best_practices.html
+[2]: https://symfony.com/doc/current/reference/requirements.html
+[3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
+[4]: https://symfony.com/download
